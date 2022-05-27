@@ -83,7 +83,7 @@ router.get('/temperament', async (req, res)=>{
 
 });
 
-//-------------POST/DOG--------------//
+//---------------POST/DOG-----------------//
 
 router.post('/dog', async(req, res)=>{
     const {
@@ -110,7 +110,7 @@ router.post('/dog', async(req, res)=>{
     res.send('Raza creada con exito')
 });
 
-//--------------GET/DOGS/ID-------------//
+//---------------GET/DOGS/ID--------------//
 
 router.get('/dogs/:id', async(req, res)=>{
     const { id } = req.params
