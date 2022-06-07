@@ -1,0 +1,27 @@
+.card {
+    width: 280px;
+    height: 430px;
+    margin: 20px;
+    background-color: #415361;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 15px;
+    color: white;
+    text-decoration: none;
+}
+
+.card:hover{
+    border: 1px solid #3fb8a7
+}
+
+.imagen{
+    margin-top: 10px;
+    width:220px; 
+    height:220px;
+    border-radius: 3px;
+    justify-content: center;
+    border-width: 7px;
+    
+}
+
+

@@ -1,0 +1,10 @@
+.filtros{
+    height: 80px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 5px;
+    color: white;
+    font-size: 18px;
+}
+
