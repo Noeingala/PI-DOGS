@@ -37,7 +37,7 @@ export function getName(name){
                 payload: json.data
             })
         } catch (error) {
-            console.log(error)
+            alert('Nombre no encontrado')
         }
     }
 };
@@ -57,10 +57,10 @@ export function getDetail(id){
 };
 
 export function postDog(payload){
-    return async function(){
+    return async function(dispatch){
         try {
             var json = await axios.post('http://localhost:3001/dog',payload)
-            return json
+            if(json) return json
         } catch (error) {
             console.log(error)
         }
@@ -95,6 +95,13 @@ export function sortByWeight(payload){
     console.log(payload)
     return{
         type: 'SORT_BY_WEIGHT',
+        payload,
+    }
+};
+
+export function sortByHeight(payload){
+    return{
+        type: 'SORT_BY_HEIGHT',
         payload,
     }
 };

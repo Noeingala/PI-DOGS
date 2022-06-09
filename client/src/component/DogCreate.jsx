@@ -14,7 +14,7 @@ export default function DogCreate(){
 
     const [input, setInput] = useState({
         name: '',
-        minHeight: '',
+        minHeight: '', 
         maxHeight: '',
         minWeight: '',
         maxWeight: '',
@@ -44,30 +44,16 @@ export default function DogCreate(){
         )
     };
 
-    function handleSelectTemperament(e){
-        setInput({
-            ...input,
-            temperament: [...input.temperament, e.target.value]
-        })
-    };
-
-    function handleDelete(e) {
-        e.preventDefault();
-          setInput({
-          ...input,
-          temperament: input.temperament.filter((temp) => temp !== e.target.innerText)
-        })
-    };
-
     function handleSubmit(e){
-        e.preventDefault()
+         e.preventDefault()
+        //  console.log(input)
         let creado = {
             name: input.name,
             height: `${input.minHeight} - ${input.maxHeight}`,
             weight: `${input.minWeight} - ${input.maxWeight}`,
             life_span: `${input.minlife_span} - ${input.maxlife_span} Años`,
             image: input.image,
-            temperament: input.temperament.join(', ')
+            temperament: input.temperament
         }
         dispatch(postDog(creado))
         setInput({
@@ -85,8 +71,23 @@ export default function DogCreate(){
         alert('Perro Creado Correctamente')
     };
 
+    function handleSelectTemperament(e){
+        setInput({
+            ...input,
+            temperament: [...input.temperament, e.target.value]
+        })
+    };
+
+    function handleDelete(e) {
+        e.preventDefault();
+          setInput({
+          ...input,
+          temperament: input.temperament.filter((temp) => temp !== e.target.value)
+        })
+    };
+
     return(
-        <div className={s.imagen}>
+        <div className={s.imagen}><br />
             <h1 className={s.titulo}>Creá tu Perro!</h1>
             <form>
                 <div className={s.form}>
@@ -167,20 +168,25 @@ export default function DogCreate(){
                 <div>
                     <label>Temperamento: </label>
                     <select onChange={(e) => handleSelectTemperament(e)}>
-                        {allTemperaments && allTemperaments.map((e)=>(
-                            <option value={e.name}>{e.name}</option>
-                        ))}
+                        {allTemperaments && allTemperaments.map((e,i)=>
+                            {
+                                return <option value={e.name} key={i}>{e.name}</option>
+                            }
+                        )}
                     </select>
                 </div><br />
                 <div className={s.div}>   
-                    { input.temperament.map((nombre) => {  //renderiza un mapeo de lo que hay en el estado
+                    { input.temperament.map((nombre, i) => {  //renderiza un mapeo de lo que hay en el estado
                         return(
-                            <button className={ss.button} onClick={(e) => handleDelete(e)}>{nombre} X </button>
-                        );  
+                            <button value={nombre} key={i} className={ss.button} onClick={(e) => handleDelete(e)}>{nombre}</button>
+                        )  
                     })}
                 </div><br />
                 <div>
-                    <button className={ss.button} type="submit" onClick={(e) => handleSubmit(e)}> Crear Perro! </button>
+                    {
+                        (errores.name || errores.minHeight || errores.maxHeight || errores.minWeight || errores.maxWeight || errores.minlife_span || errores.maxlife_span || errores.image) 
+                        ? null : <button className={ss.button} type="submit" onClick={(e) => handleSubmit(e)}> Crear Perro! </button>
+                    }
                 </div>
                 </div>
             </form>

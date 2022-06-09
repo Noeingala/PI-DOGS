@@ -10,7 +10,7 @@ import s from '../Css/NavBar.module.css'
 
 
 
-export default function NavBar(){
+export default function NavBar({setCurrentPage}){
     const dispatch = useDispatch()
 
     useEffect(()=>{
@@ -20,16 +20,16 @@ export default function NavBar(){
     return(
         <div className={s.filtros}>
             <div>
-                <FilterTemp/>
+                <FilterTemp setCurrentPage={setCurrentPage}/>
             </div>
             <div>
-                <FiltroExistingBreed/>
+                <FiltroExistingBreed />
+            </div> 
+            <div>
+                <SortByWeight setCurrentPage={setCurrentPage}/>
             </div>
             <div>
-                <SortByWeight/>
-            </div>
-            <div>
-                <SortName/>
+                <SortName setCurrentPage={setCurrentPage}/>
             </div>
         </div>
     )

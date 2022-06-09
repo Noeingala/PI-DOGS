@@ -10,6 +10,7 @@ export default function FiltroExistingBreed(){
     const handleFilterExistingBreed = (e)=>{
         e.preventDefault()
         dispatch(filterExistingBreed(e.target.value))
+        // setCurrentPage(1)
     }
 
     return(

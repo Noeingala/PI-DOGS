@@ -39,7 +39,7 @@ const getDbInfo = async () => {
                 model: Temperament, 
                 attributes: ['name'], 
                 through: {
-                    attributes: [],
+                    temperaments: [],
                 },
             }
         })
@@ -61,22 +61,27 @@ const getAllDogs = async () => {
 
 //---------------GET/DOGS-----------------//
 
-router.get('/dogs', async(req, res, next) =>{
+router.get('/dogs', async (req, res, next) => {
     try {
-        const { name } = req.query
-        let dogsTotal = await getAllDogs()
-        if(name){ 
-            let dogName = await dogsTotal.filter(e => e.name.toLowerCase().includes(name.toLowerCase())); 
-            dogName.length
-            ? res.status(200).send(dogName) 
-            : res.status(404).send('No se encontro la raza ingresada') 
-        } else { 
-            res.status(200).send(dogsTotal)
+        const { name } = req.query;
+        const dogsTotal = await getAllDogs();
+      
+        if (!name) {
+          res.status(200).json(dogsTotal);
+        } else {
+          const filtrados = dogsTotal.filter((e) => {
+            const names = e.name.toUpperCase();
+            if (names.includes(name.toUpperCase())) return names;
+          });
+          filtrados.length 
+          ? res.status(200).json(filtrados)
+          : res.status(400).send('Raza no encontrada');
         }
     } catch (error) {
         next(error)
     }
-});
+  });
+
 
 //-------------GET/TEMPERAMENT------------//
 
@@ -116,18 +121,22 @@ router.post('/dog', async(req, res, next)=>{
             createdInDb,
             image,
           } = req.body;
-    
-          const createDog = await Dog.create({
-            name: name,
-            height: height,
-            weight: weight,
-            life_span: life_span,
-            createdInDb: createdInDb,
-            image: image,
-          })
-    
-        const temperamentDb = await Temperament.findAll({where: {name : temperament}})
-        createDog.addTemperament(temperamentDb)
+            
+          const [createDog] = await Dog.findOrCreate({
+              where:{
+                name: name,
+                height: height,
+                weight: weight,
+                life_span: life_span,
+                createdInDb: true,
+                image: image,
+             }
+        })
+        // console.log(createDog)
+        temperament.forEach(async(t) => {
+            const temperamentDb = await Temperament.findOne({where: {name : t}})
+            await createDog.addTemperament(temperamentDb)
+        })
         res.send('Raza creada con exito')
     } catch (error) {
         next(error)
@@ -150,5 +159,6 @@ router.get('/dogs/:id', async(req, res, next)=>{
         next(error)
     }
 });
+
 
 module.exports = router;

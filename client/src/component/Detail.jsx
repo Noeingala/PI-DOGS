@@ -16,6 +16,16 @@ export default function Detail(){
         dispatch(getDetail(id));
     }, [dispatch, id]);
 
+    let aux = [];
+    if(dogDetail.length > 0){
+        aux = Object.keys(dogDetail[0])
+    }
+
+    const temp = aux.length > 0 ? aux.includes('temperaments') ? (dogDetail[0].temperaments.map(t=>{
+           return t.name })).join(', ') : dogDetail[0].temperament : null
+
+
+//    console.log(dogDetail[0])
     return (
         <div className={s.imagen}>
             <div>
@@ -23,7 +33,7 @@ export default function Detail(){
                 dogDetail.length > 0 ? 
                 <div className={s.contenedor}>
                     <div >
-                        <img className={s.imagdetalle} src={dogDetail[0].image} alt= "no tiene imagen"/>
+                        <img className={s.imagdetalle} src={dogDetail[0].image} alt= 'no tiene imagen'/>
                     </div>
                     <div className={s.info}>
                         <div className={s.titulo}>
@@ -31,12 +41,13 @@ export default function Detail(){
                         </div>
                         <div >
                             <h4>Temperamento: </h4>
-                            <p>{!dogDetail[0].createdInDb ? dogDetail[0].temperament + ', ' : dogDetail[0].temperaments.map(e => e.name + (', '))}</p>
+                            { temp && 
+                            <p>{temp}</p>}
                             <h4>Altura: {dogDetail[0].height + ' cm'}</h4>
                             
                             <h4>Peso: {dogDetail[0].weight + ' Kgs'}</h4>
                             
-                            <h4>Años de Vida: {dogDetail[0].life_span + ' Años'}</h4>
+                            <h4>Años de Vida: {dogDetail[0].life_span}</h4>
                               
                         </div>
                     </div>

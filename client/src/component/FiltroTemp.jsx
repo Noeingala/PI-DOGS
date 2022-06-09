@@ -4,19 +4,19 @@ import { getTemperaments, filterTemperament } from "../actions";
 import s from '../Css/FilterTemp.module.css'
 
 
-export default function FilterTemp(){
-    const dispatch = useDispatch();
+export default function FilterTemp({setCurrentPage}){
+    const dispatch = useDispatch()
     const allTemperaments = useSelector((e)=>e.temperament)
-    //const [currentPage, setCurrentPage] = useState(1)
+   
 
     useEffect(()=>{
         dispatch(getTemperaments())
-        //setCurrentPage(1)
     },[dispatch])
-
+    
     const handleFilterTemperament=(e)=>{
         e.preventDefault()
         dispatch(filterTemperament(e.target.value))
+        setCurrentPage(1)
     }
 
     return(

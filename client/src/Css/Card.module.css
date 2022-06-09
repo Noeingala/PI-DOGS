@@ -1,8 +1,8 @@
 .card {
     width: 280px;
-    height: 430px;
+    height: 460px;
     margin: 20px;
-    background-color: #415361;
+    background-color: #3a4245;
     text-align: center;
     border-radius: 5px;
     font-size: 15px;
@@ -24,4 +24,9 @@
     
 }
 
+.titulo{
+    color: #3fb8a7;
+    text-decoration: none;
+    font-size: 20px;
+}
 

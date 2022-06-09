@@ -10,7 +10,7 @@ export default function LandingPage(){
             <h1> Bienvenidos a </h1>
             <h1> esta aventura! </h1>
         </div>
-            <Link to='/home'>
+            <Link to='/home' style={{textDecoration:'none'}}>
                 <button className={s.button}> Ingresar </button>
             </Link>
         </div>

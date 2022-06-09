@@ -1,0 +1,57 @@
+.imagen{
+    background-image: url('../imagenes/imagenfondoError.jpg');
+    height: 100vh;
+    background-size: cover;
+}
+
+.titulo{
+    margin-top: 0px;
+    color: #3a4245;
+    font-size: 40px;
+    text-align: center;
+    justify-content: center;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.contenido{
+    color: #3a4245;
+    font-size: 20px;
+}
+
+.boton{
+    padding: 0.8em 1.8em;
+    border: 1px solid #3a4245;
+    position: relative;
+    overflow: hidden;
+    background-color: transparent;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 13px;
+    transition: .3s;
+    z-index: 1;
+    font-family: inherit;
+    color: #3a4245;
+    margin-left: 160px;
+    margin-top: 240px;
+}
+
+.boton::before {
+    content: '';
+    width: 0;
+    height: 300%;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    background: #3a4245;
+    transition: .5s ease;
+    display: block;
+    z-index: -1;
+}
+
+.boton:hover::before {
+    width: 105%;
+}
+   
+.boton:hover {
+    color: #111;
+}

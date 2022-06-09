@@ -24,7 +24,7 @@ export default function Search() {
 }
     function handleSubmit(e){
         e.preventDefault();
-        setName("");
+        setName('');
         dispatch(getName(name));
         
     }
@@ -34,7 +34,7 @@ return (
     <div>
         <input
         className={s.input}
-        type="text"
+        type='text'
         placeholder='Buscar por nombre...'
         value={name}
         onChange={(e) => handleInputChange(e)}

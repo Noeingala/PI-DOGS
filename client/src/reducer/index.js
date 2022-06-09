@@ -87,14 +87,26 @@ function rootReducer (state=inicialState, action){
                     allDogs: [...state.allDogs].sort((a,b)=>{
                         let pesoA = parseInt(a.weight.split('-')[0]);
                         let pesoB = parseInt(b.weight.split('-')[0]);
+                        let pesoA2 = parseInt(a.weight.split('-')[1]);
+                        let pesoB2 = parseInt(b.weight.split('-')[1]);
                         if(pesoA > pesoB) return 1;
+                        if(pesoA === pesoB){
+                            if(pesoA2 > pesoB2) return 1;
+                            else if (pesoB2 > pesoA2) return -1
+                        }
                         if(pesoA < pesoB) return -1;
                         else return 0;
                     }),
                     dogs: [...state.dogs].sort((a,b)=>{
                         let pesoA = parseInt(a.weight.split('-')[0]);
                         let pesoB = parseInt(b.weight.split('-')[0]);
+                        let pesoA2 = parseInt(a.weight.split('-')[1]);
+                        let pesoB2 = parseInt(b.weight.split('-')[1]);
                         if(pesoA > pesoB) return 1;
+                        if(pesoA === pesoB){
+                            if(pesoA2 > pesoB2) return 1;
+                            else if (pesoB2 > pesoA2) return -1
+                        }
                         if(pesoA < pesoB) return -1;
                         else return 0;
                     }),
@@ -106,19 +118,71 @@ function rootReducer (state=inicialState, action){
                     allDogs: [...state.allDogs].sort((a,b)=>{
                         let pesoA = parseInt(a.weight.split('-')[0]);
                         let pesoB = parseInt(b.weight.split('-')[0]);
+                        let pesoA2 = parseInt(a.weight.split('-')[1]);
+                        let pesoB2 = parseInt(b.weight.split('-')[1]);
                         if(pesoA < pesoB) return 1;
+                        if(pesoA === pesoB){
+                            if(pesoA2 > pesoB2) return 1;
+                            else if (pesoB2 > pesoA2) return -1
+                        }
                         if(pesoA > pesoB) return -1;
                         else return 0;
                     }),
                     dogs: [...state.dogs].sort((a,b)=>{
                         let pesoA = parseInt(a.weight.split('-')[0]);
                         let pesoB = parseInt(b.weight.split('-')[0]);
+                        let pesoA2 = parseInt(a.weight.split('-')[1]);
+                        let pesoB2 = parseInt(b.weight.split('-')[1]);
                         if(pesoA < pesoB) return 1;
+                        if(pesoA === pesoB){
+                            if(pesoA2 > pesoB2) return 1;
+                            else if (pesoB2 > pesoA2) return -1
+                        }
                         if(pesoA > pesoB) return -1;
                         else return 0;
                     })
                     }
                 }
+                break;
+                case 'SORT_BY_HEIGHT':
+                    if(action.payload === 'All'){
+                        return{
+                            ...state,
+                            allDogs: [...state.allDogs],
+                            dogs: [...state.dogs]
+                        }
+                    }
+                    else if(action.payload === 'Asc'){
+                        return {
+                            ...state,
+                        allDogs: [...state.allDogs].sort((a,b)=>{
+                            let alturaA = parseInt(a.height.split('-')[0]);
+                            let alturaB = parseInt(b.height.split('-')[0]);
+                            let alturaA2 = parseInt(a.height.split('-')[1]);
+                            let alturaB2 = parseInt(b.height.split('-')[1]);
+                            if(alturaA > alturaB) return 1;
+                            if(alturaA === alturaB){
+                                if(alturaA2 > alturaB2) return 1;
+                                else if (alturaB2 > alturaA2) return -1
+                            }
+                            if(alturaA < alturaB) return -1;
+                            else return 0;
+                        }),
+                        dogs: [...state.dogs].sort((a,b)=>{
+                            let alturaA = parseInt(a.height.split('-')[0]);
+                            let alturaB = parseInt(b.height.split('-')[0]);
+                            let alturaA2 = parseInt(a.height.split('-')[1]);
+                            let alturaB2 = parseInt(b.height.split('-')[1]);
+                            if(alturaA > alturaB) return 1;
+                            if(alturaA === alturaB){
+                                if(alturaA2 > alturaB2) return 1;
+                                else if (alturaB2 > alturaA2) return -1
+                            }
+                            if(alturaA < alturaB) return -1;
+                            else return 0;
+                        }),
+                        }
+                    }
                 break;
         default:
             return state;

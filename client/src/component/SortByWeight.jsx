@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { sortByWeight } from "../actions";
 import s from '../Css/FilterTemp.module.css'
 
-export default function SortByWeitgh(){
+export default function SortByWeitgh({setCurrentPage}){
     const dispatch = useDispatch()
 
     useEffect(()=>{
@@ -14,6 +14,7 @@ export default function SortByWeitgh(){
     function handleSortByWeight(e) {
         e.preventDefault();
         dispatch(sortByWeight(e.target.value));
+        setCurrentPage(1)
     }
     return(
         <div>
