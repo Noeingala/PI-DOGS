@@ -103,7 +103,8 @@ export default function DogCreate(){
                 </div><br />
                 <div>
                     <label>Altura Minima: </label>
-                    <input type='number'
+                    <input 
+                           type='number'
                            name='minHeight'
                            placeholder='Centimetros'
                            value={input.minHeight}
@@ -183,8 +184,9 @@ export default function DogCreate(){
                     })}
                 </div><br />
                 <div>
-                    {
-                        (errores.name || errores.minHeight || errores.maxHeight || errores.minWeight || errores.maxWeight || errores.minlife_span || errores.maxlife_span || errores.image) 
+                    {       
+                        (!input.name || !input.minHeight || !input.maxHeight || !input.minWeight || !input.maxWeight || !input.minlife_span || !input.maxlife_span || !input.image || input.temperament===undefined)
+                        || (errores.name || errores.minHeight || errores.maxHeight || errores.minWeight || errores.maxWeight || errores.minlife_span || errores.maxlife_span || errores.image) 
                         ? null : <button className={ss.button} type="submit" onClick={(e) => handleSubmit(e)}> Crear Perro! </button>
                     }
                 </div>

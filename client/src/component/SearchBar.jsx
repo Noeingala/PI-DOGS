@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { getName, getDogs } from "../actions/index";
 import s from '../Css/SearchBar.module.css'
 
-export default function Search() {
+export default function Search({setCurrentPage}) {
     const dispatch = useDispatch();
     const [name, setName] = useState("");
 
@@ -14,6 +14,7 @@ export default function Search() {
     function handleInputChange(e) {
         e.preventDefault();
         setName(e.target.value);
+        setCurrentPage(1)
 
     
 //       if(name.length>1){

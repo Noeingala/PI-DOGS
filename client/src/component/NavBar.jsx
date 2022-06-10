@@ -15,7 +15,7 @@ export default function NavBar({setCurrentPage}){
 
     useEffect(()=>{
         dispatch(getDogs())
-    },[dispatch])
+    },[dispatch])   //dependencia a la que tiene que estar atento si hay cambios
 
     return(
         <div className={s.filtros}>
@@ -23,7 +23,7 @@ export default function NavBar({setCurrentPage}){
                 <FilterTemp setCurrentPage={setCurrentPage}/>
             </div>
             <div>
-                <FiltroExistingBreed />
+                <FiltroExistingBreed setCurrentPage={setCurrentPage}/>
             </div> 
             <div>
                 <SortByWeight setCurrentPage={setCurrentPage}/>

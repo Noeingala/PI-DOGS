@@ -4,13 +4,13 @@ import { filterExistingBreed } from "../actions";
 import s from '../Css/FilterTemp.module.css'
 
 
-export default function FiltroExistingBreed(){
+export default function FiltroExistingBreed({setCurrentPage}){
     const dispatch = useDispatch()
 
     const handleFilterExistingBreed = (e)=>{
         e.preventDefault()
         dispatch(filterExistingBreed(e.target.value))
-        // setCurrentPage(1)
+        setCurrentPage(1)
     }
 
     return(

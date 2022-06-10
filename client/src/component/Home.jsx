@@ -17,9 +17,9 @@ export default function Home(){
     const allDogs = useSelector((state) => state.allDogs)           //traemos lo que hay en el estado
     const dogs = useSelector((state) => state.dogs)
  
-    const [currentPage, setCurrentPage] = useState(1)       //guardo en el estado local, la pagina actual 
-    let [dogsPorPag, setDogsPorPag] = useState(8)           //guardo cuantos personajes quiero por pag
-    const indiceUltimoDog = currentPage * dogsPorPag        //sobre la pag actual multiplicamos por los perros por pag 
+    const [currentPage, setCurrentPage] = useState(1)               //guardo en el estado local, la pagina actual 
+    let [dogsPorPag, setDogsPorPag] = useState(8)                   //guardo cuantos personajes quiero por pag
+    const indiceUltimoDog = currentPage * dogsPorPag                //sobre la pag actual multiplicamos por los perros por pag 
     const indicePrimerDog = indiceUltimoDog - dogsPorPag    
    
     const paginado = (numPag)=>{
@@ -78,7 +78,7 @@ export default function Home(){
             <Link to='/dog'>
                 <button className={ss.button}> Crea tu Raza </button>
             </Link>
-                <SearchBar/>
+                <SearchBar setCurrentPage={setCurrentPage}/>
                 <SortByHeight/>
             </div>
             <div>

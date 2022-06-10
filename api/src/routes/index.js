@@ -160,5 +160,47 @@ router.get('/dogs/:id', async(req, res, next)=>{
     }
 });
 
+// router.delete('/dogs/:id', async (req,res)=>{
+//     const {id} = req.params;
+//     const dogsTotal = await getAllDogs()
+//       if(id){
+//     try {
+//       const unico = await dogsTotal.findByPk(id)
+//       if(unico){
+//         unico.destroy({where:{id:id}})
+//         res.status(200).send('Perro eliminado correctamente')
+//       }
+//       res.status(400).send('no se logro eliminar el perro')
+//     } catch (error) {
+//       res.status(400).send('no se pudo eliminar el perro')
+//     }
+//   }
+// })
+
+// router.delete('/dogs/:id', async (req, res) => {
+//     let { id } = req.params;
+//     const dogsTotal = await getAllDogs()
+//     const findeo = dogsTotal.find((p) => p.id === parseInt(id));
+//     if (!id || !findeo) {
+//       return res
+//         .status(400)
+//         .json('no se pudo eliminar el perro');
+//     }
+//     posts = dogsTotal.filter((f) => f.id !== parseInt(id));
+//     res.json({ success: true });
+//   });
+
+// router.delete('/dogs/:id', async (req,res)=>{
+//     try {
+//         const { id } = req.params;
+//         const dogsTotal = await getAllDogs()
+//         if(id){
+//             dogsTotal.destroy({where:{id:id}})
+//             res.status(200).send('se elimino')
+//         }
+//     } catch (error) {
+//         res.status(400).send('no se elimino')
+//     }
+// })
 
 module.exports = router;
