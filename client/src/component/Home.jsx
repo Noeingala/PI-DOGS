@@ -22,7 +22,7 @@ export default function Home(){
     const indiceUltimoDog = currentPage * dogsPorPag                //sobre la pag actual multiplicamos por los perros por pag 
     const indicePrimerDog = indiceUltimoDog - dogsPorPag    
    
-    const paginado = (numPag)=>{
+    const paginado = (numPag)=>{                                    //le paso un num de pagina y me setea a ese num
         setCurrentPage(numPag)
     };
 
