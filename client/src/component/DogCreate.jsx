@@ -32,7 +32,7 @@ export default function DogCreate(){
     
     //setea el estado input
     function handleChange(e){
-        if(!input.name.includes(e.target.value))
+        // if(!input.name.includes(e.target.value))
         setInput({
             ...input,
             [e.target.name]:e.target.value

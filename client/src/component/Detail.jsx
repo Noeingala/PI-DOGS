@@ -48,6 +48,8 @@ export default function Detail(){
                             <h4>Peso: {dogDetail[0].weight + ' Kgs'}</h4>
                             
                             <h4>Años de Vida: {dogDetail[0].life_span}</h4>
+
+                            {/* <h4>Origen: {dogDetail[0].origin}</h4> */}
                               
                         </div>
                     </div>

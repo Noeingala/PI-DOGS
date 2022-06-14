@@ -37,6 +37,9 @@ module.exports = (sequelize) => {
     createdInDb:{
       type: DataTypes.BOOLEAN,
       defaultValue: true,
-    }
+    },
+    // origin:{
+    //   type: DataTypes.STRING
+    // }
   }, {timestamps: false});
 };

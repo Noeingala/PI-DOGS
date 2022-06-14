@@ -22,7 +22,7 @@ const { conn } = require('./src/db.js');
 const { getApiInfo } = require('./src/routes/index')
 
 // Syncing all the models at once.
-conn.sync({ force: true })
+conn.sync({ force: false })
 .then(getApiInfo, console.log('se guardaron los perros'))
 .then(() => {
   server.listen(3001, () => {

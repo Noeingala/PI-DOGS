@@ -24,6 +24,7 @@ const getApiInfo = async () => {
                 life_span: e.life_span,
                 temperament: e.temperament, 
                 image: e.image.url,
+                origin: e.origin,
             };
         });
         return apiInfo;

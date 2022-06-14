@@ -9,6 +9,16 @@ export default function Paginado({ dogsPorPag, allDogs, paginado }) {
       }
 
       return (
+        // <nav>
+        //   {
+        //     numPag?.map(number =>{
+        //       let active = (activePage === number)
+        //       return (
+        //         <button key={number} onClick={() => paginado(number)} className={s.activebutton ? active : 'inactive'}>{number}</button>
+        //       )
+        //     })
+        //   }
+        // </nav>
         <nav>
             <ul className={s.contenido}>
             {numPag && numPag.map((number) => {
